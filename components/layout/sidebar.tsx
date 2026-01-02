@@ -37,11 +37,11 @@ const menuItems = [
     href: "/estoque",
     icon: Package,
   },
-  {
-    title: "Relatórios",
-    href: "/relatorios",
-    icon: BarChart3,
-  },
+  // {
+  //   title: "Relatórios",
+  //   href: "/relatorios",
+  //   icon: BarChart3,
+  // },
 ];
 
 function SidebarContent({ onItemClick }: { onItemClick?: () => void }) {
@@ -54,8 +54,8 @@ function SidebarContent({ onItemClick }: { onItemClick?: () => void }) {
   };
 
   return (
-    <div className="flex flex-col h-full">
-      <div className="mb-8">
+    <div className="flex flex-col min-h-screen">
+      <div className="mb-8 mt-4">
         <h2 className="text-xl font-bold">YaGu Papelaria</h2>
         {user && <p className="text-sm text-orange-200">Olá, {user.name}</p>}
       </div>
@@ -69,7 +69,7 @@ function SidebarContent({ onItemClick }: { onItemClick?: () => void }) {
             <Link key={item.href} href={item.href} onClick={onItemClick}>
               <Button
                 variant={isActive ? "secondary" : "ghost"}
-                className="w-full justify-start text-white hover:text-orange-900 hover:bg-orange-500"
+                className="w-full justify-start hover:text-orange-900 hover:bg-[#fb9240] cursor-pointer gap-4 mb-1 "
               >
                 <Icon className="mr-2 h-4 w-4" />
                 {item.title}
@@ -79,7 +79,7 @@ function SidebarContent({ onItemClick }: { onItemClick?: () => void }) {
         })}
       </nav>
 
-      <div className="mt-auto">
+      <div className="mt-auto mb-4">
         <Button
           variant="ghost"
           onClick={handleLogout}
@@ -99,7 +99,7 @@ export function Sidebar() {
   return (
     <>
       {/* Desktop Sidebar */}
-      <div className="hidden lg:block w-64 bg-orange-900 text-white min-h-screen p-4">
+      <div className="hidden lg:block w-64 bg-orange-900 text-white min-h-screen pl-4 pr-4">
         <SidebarContent />
       </div>
 

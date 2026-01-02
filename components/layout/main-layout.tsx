@@ -37,9 +37,9 @@ export function MainLayout({ children }: MainLayoutProps) {
   }
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen">
+    <div className="flex flex-col lg:flex-row min-h-screen overflow-y-scroll scrollbar-hide">
       <Sidebar />
-      <main className="flex-1 p-4 lg:p-6 bg-gray-50 min-h-screen overflow-x-hidden">
+      <main className="flex-1 p-4 lg:p-6 bg-gray-50 min-h-screen max-h-screen overflow-x-hidden">
         {children}
       </main>
     </div>
