@@ -11,6 +11,7 @@ import {
 interface User {
   email: string;
   name: string;
+  role: "USER" | "ADMIN";
 }
 
 interface AuthContextType {
@@ -36,6 +37,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setUser({
         email: userEmail,
         name: userEmail.split("@")[0], // Nome baseado no email
+        role: "ADMIN", // Definir o papel do usuário
       });
     }
     setLoading(false);
@@ -44,9 +46,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const login = async (email: string, password: string): Promise<boolean> => {
     // Simulação de login - em produção seria uma API
     if (email && password) {
-      const userData = {
+      const userData: User = {
         email,
         name: email.split("@")[0],
+        role: "ADMIN", // Definir o papel do usuário
       };
 
       setUser(userData);

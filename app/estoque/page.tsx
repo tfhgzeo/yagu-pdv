@@ -41,6 +41,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Categoria, useEstoque } from "@/contexts/estoque-context";
+import { useAuth } from "@/contexts/auth-context";
 
 interface Produto {
   id: string;
@@ -59,6 +60,7 @@ export default function EstoquePage() {
     adicionarProduto,
     atualizaCategoria,
   } = useEstoque();
+  const { user } = useAuth();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isIdalogOpenCategoria, setIsIdalogOpenCategoria] = useState(false);
   const [produtoEditando, setProdutoEditando] = useState<Produto | null>(null);
@@ -400,6 +402,7 @@ export default function EstoquePage() {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
+
           {/*Botão de limpar os filtros de pesquisa*/}
           <Button
             onClick={() => {
@@ -424,14 +427,18 @@ export default function EstoquePage() {
                     <CardTitle className="text-base lg:text-lg line-clamp-2 flex-1">
                       {produto.nome}
                     </CardTitle>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => editarProduto(produto)}
-                      className="shrink-0"
-                    >
-                      <Edit className="h-4 w-4" />
-                    </Button>
+                    {user?.role === "ADMIN" ? (
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => editarProduto(produto)}
+                        className="shrink-0 hover:bg-gray-200 cursor-pointer"
+                      >
+                        <Edit className="h-4 w-4" />
+                      </Button>
+                    ) : (
+                      <></>
+                    )}
                   </div>
                 </CardHeader>
                 <CardContent className="space-y-3 pt-0">
