@@ -32,6 +32,7 @@ import {
   ListFilter,
   BrushCleaning,
   Pencil,
+  Form,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -167,6 +168,7 @@ export default function EstoquePage() {
 
           {/*Botoes de edicao do estoque */}
           <div className="flex justify-center items-center gap-4">
+            {/* Novo Produto */}
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
               <DialogTrigger asChild>
                 <Button onClick={resetForm} className="w-full sm:w-auto">
@@ -278,6 +280,7 @@ export default function EstoquePage() {
               </DialogContent>
             </Dialog>
 
+            {/* Editar Categoria */}
             <Dialog
               open={isIdalogOpenCategoria}
               onOpenChange={setIsIdalogOpenCategoria}
@@ -288,7 +291,17 @@ export default function EstoquePage() {
                   Editar Categorias
                 </Button>
               </DialogTrigger>
-              <DialogContent></DialogContent>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Editar Categorias</DialogTitle>
+                </DialogHeader>
+                <form onSubmit={() => {}} className="space-y-4">
+                  <div>
+                    <Label htmlFor="name">Nome</Label>
+                    <Input id="name" />
+                  </div>
+                </form>
+              </DialogContent>
             </Dialog>
           </div>
         </div>
