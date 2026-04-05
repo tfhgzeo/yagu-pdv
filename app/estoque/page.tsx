@@ -32,7 +32,7 @@ import {
   ListFilter,
   BrushCleaning,
   Pencil,
-  Form,
+  Tags,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -168,10 +168,35 @@ export default function EstoquePage() {
 
           {/*Botoes de edicao do estoque */}
           <div className="flex justify-center items-center gap-4">
+          
+            {/* Editar Categoria */}
+            <Dialog
+              open={isIdalogOpenCategoria}
+              onOpenChange={setIsIdalogOpenCategoria}
+            >
+              <DialogTrigger asChild>
+                <Button className="w-full sm:w-auto cursor-pointer">
+                  <Tags className="mr-3" />
+                  Editar Categorias
+                </Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Editar Categorias</DialogTitle>
+                </DialogHeader>
+                <form onSubmit={() => {}} className="space-y-5">
+                  <div>
+                    <Label htmlFor="name">Nome</Label>
+                    <Input id="name" />
+                  </div>
+                </form>
+              </DialogContent>
+            </Dialog>
+
             {/* Novo Produto */}
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
               <DialogTrigger asChild>
-                <Button onClick={resetForm} className="w-full sm:w-auto">
+                <Button onClick={resetForm} className="w-full sm:w-auto cursor-pointer">
                   <Plus className="mr-2 h-4 w-4" />
                   Novo Produto
                 </Button>
@@ -280,29 +305,6 @@ export default function EstoquePage() {
               </DialogContent>
             </Dialog>
 
-            {/* Editar Categoria */}
-            <Dialog
-              open={isIdalogOpenCategoria}
-              onOpenChange={setIsIdalogOpenCategoria}
-            >
-              <DialogTrigger asChild>
-                <Button className="w-full sm:w-auto">
-                  <Pencil className="mr-2" />
-                  Editar Categorias
-                </Button>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>Editar Categorias</DialogTitle>
-                </DialogHeader>
-                <form onSubmit={() => {}} className="space-y-4">
-                  <div>
-                    <Label htmlFor="name">Nome</Label>
-                    <Input id="name" />
-                  </div>
-                </form>
-              </DialogContent>
-            </Dialog>
           </div>
         </div>
 

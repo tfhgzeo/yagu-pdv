@@ -55,6 +55,7 @@
     --popover: oklch(1 0 0);
     --popover-foreground: oklch(0.145 0 0);
     --primary: oklch(0.205 0 0);
+    --primary-buttom: "#E76E50";
     --primary-foreground: oklch(0.985 0 0);
     --secondary: #fed7ab;
     --secondary-foreground: oklch(0.205 0 0);
